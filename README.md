@@ -62,4 +62,4 @@ ALTER TABLE myyy ADD COLUMN id serial NOT NULL;
 ALTER TABLE myyy ADD PRIMARY KEY (id);
 ```
 
-Полная документация для 0.0.3 лежит [тут](http://predokmif.github.io/doc/dbUpdater/)
+Полная документация лежит [тут](http://predokmif.github.io/doc/dbUpdater/)

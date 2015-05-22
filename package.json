@@ -1,6 +1,6 @@
 ﻿{
   "name": "dbupdater",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "src/dbUpdater.js",
   "repository": {
     "type": "git",
