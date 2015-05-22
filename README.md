@@ -1,9 +1,5 @@
 ﻿# dbUpdater
 
-[![NPM version](https://img.shields.io/npm/v/grunt-uncss.svg?)](https://www.npmjs.com/package/dbupdater)
-[![Release](https://img.shields.io/github/release/citusdata/dbupdater.svg)][release]
-[![License](https://img.shields.io/:license-MITLv3-blue.svg)][license]
-
 Данный модуль предназначен для выполнение разнообразных действий (задач) при старте проекта.
 Главной особенность задачи в том, что она обязательно должна быть выполнена и только один раз.
 Наиболее частое применение - обновление БД из заранее подготовленых файлов.
