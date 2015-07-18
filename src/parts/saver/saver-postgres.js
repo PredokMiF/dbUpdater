@@ -84,7 +84,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
                     '   name character varying(256) NOT NULL, ' +
                     '   md5 character varying(128) NOT NULL, ' +
                     '   executed timestamp without time zone NOT NULL DEFAULT now(),' +
-                    '   CONSTRAINT tasks_pkey PRIMARY KEY (name)' +
+                    '   PRIMARY KEY (name)' +
                     ');',
                     self.config.dbTable
                 );
