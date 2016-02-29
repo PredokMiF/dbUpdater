@@ -5,7 +5,7 @@ var path = require('path');
 var util = require('util');
 var _ = require('lodash');
 var async = require('async');
-var md5 = require('MD5');
+var md5 = require('md5');
 
 var debug = require("debug");
 var logDev = debug('dbupdater:reader:file:dev');
