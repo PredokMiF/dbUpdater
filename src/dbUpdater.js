@@ -83,8 +83,8 @@ DbUpdater.prototype = {
             return;
         }
 
-        _.bindAll(self.taskReader);
-        _.bindAll(self.taskSaver);
+        _.bindAll(self.taskReader, ['init', 'getTasks']);
+        _.bindAll(self.taskSaver, ['init', 'getTasks']);
 
         async.series(
             {
@@ -135,7 +135,7 @@ DbUpdater.prototype = {
         );
 
         function taskIterator (executedTasks, toExecuteTask, next) {
-            var taskPos = _.findIndex(executedTasks, 'name', toExecuteTask.name),
+            var taskPos = _.findIndex(executedTasks, {'name': toExecuteTask.name}),
                 executedTask,
                 executor;
 

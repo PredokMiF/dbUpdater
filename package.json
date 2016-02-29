@@ -19,7 +19,8 @@
   },
   "homepage": "http://predokmif.github.io/doc/dbUpdater/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc_gen": "jsdoc -c jsDocConf.json"
   },
   "keywords": [
     "PostgreSQL",
