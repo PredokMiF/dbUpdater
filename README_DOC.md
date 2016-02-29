@@ -1,4 +1,4 @@
-﻿# dbUpdater
+﻿# dbupdater
 
 Данный модуль предназначен для выполнение разнообразных действий (задач) при старте проекта.
 Главной особенность задачи в том, что она обязательно должна быть выполнена и только один раз.
@@ -14,16 +14,16 @@
 Using npm:
 
 ```bash
-$ npm install --save dbUpdater
+$ npm install --save dbupdater
 ```
 
 In Node.js/io.js:
 
 ```js
-var DbUpdater = require('dbUpdater');
+var DbUpdater = require('dbupdater');
 var dbConnStr = 'postgres://user:pass@localhost/dbName';
 
-var dbUpdater = DbUpdater({
+var dbupdater = DbUpdater({
      taskReader: DbUpdater.TaskReaderFile(/*{path: 'tasks'}*/),
      taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: dbConnStr/*, dbTable: 'tasks'*/}),
      taskExecutors: [
@@ -32,11 +32,11 @@ var dbUpdater = DbUpdater({
      ]
 });
 
-dbUpdater.init(function (err) {
+dbupdater.init(function (err) {
      if (err) {
-         console.error('dbUpdater: ' + err);
+         console.error('dbupdater: ' + err);
      } else {
-         console.log('dbUpdater done success!');
+         console.log('dbupdater done success!');
      }
 });
 ```
@@ -44,7 +44,7 @@ dbUpdater.init(function (err) {
 JS задача
 ```js
 // Имя файла tasks/20150506-0053-grigorchuk.postgres-file-js.js
-var _ = require('lodash-node');
+var _ = require('lodash');
 module.exports = function (client, cb) {
 var sql = 'CREATE TABLE "myyy" (' +
      '   name character varying(256) NOT NULL, ' +

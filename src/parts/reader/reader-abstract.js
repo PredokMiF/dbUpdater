@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var debug = require("debug");
-var logErr = debug('dbUpdater:reader:abstract:err');
+var logErr = debug('dbupdater:reader:abstract:err');
 
 /** @namespace Reader */
 

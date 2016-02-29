@@ -3,13 +3,13 @@
 var fs = require('fs');
 var util = require('util');
 var pg = require('pg');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:saver:postgres:dev');
-var log = debug('dbUpdater:saver:postgres:log');
-var logWarn = debug('dbUpdater:saver:postgres:warn');
-var logErr = debug('dbUpdater:saver:postgres:err');
+var logDev = debug('dbupdater:saver:postgres:dev');
+var log = debug('dbupdater:saver:postgres:log');
+var logWarn = debug('dbupdater:saver:postgres:warn');
+var logErr = debug('dbupdater:saver:postgres:err');
 
 var TaskSaverAbstract = require('./saver-abstract');
 

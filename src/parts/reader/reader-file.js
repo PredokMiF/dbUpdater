@@ -3,15 +3,15 @@
 var fs = require('fs');
 var path = require('path');
 var util = require('util');
-var _ = require('lodash-node');
+var _ = require('lodash');
 var async = require('async');
 var md5 = require('MD5');
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:reader:file:dev');
-var log = debug('dbUpdater:reader:file:log');
-var logWarn = debug('dbUpdater:reader:file:warn');
-var logErr = debug('dbUpdater:reader:file:err');
+var logDev = debug('dbupdater:reader:file:dev');
+var log = debug('dbupdater:reader:file:log');
+var logWarn = debug('dbupdater:reader:file:warn');
+var logErr = debug('dbupdater:reader:file:err');
 
 var TaskReaderAbstract = require('./reader-abstract');
 
@@ -21,7 +21,7 @@ var DEF_CONFIG = {
 
 
 /**
- * Транспорт чтения задач для dbUpdater'а из файловой системы 
+ * Транспорт чтения задач для dbupdater'а из файловой системы 
  * @param {object} [config] - параметры инициализации транспорта
  * @param {string} [config.path=tasks] - путь к папке с файлама задач
  * @returns {Reader.TaskReaderFile}

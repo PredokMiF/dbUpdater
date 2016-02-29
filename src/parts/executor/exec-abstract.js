@@ -1,10 +1,10 @@
 ﻿"use strict";
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:executor:abstract:dev');
-var logLog = debug('dbUpdater:executor:abstract:log');
-var logWarn = debug('dbUpdater:executor:abstract:warn');
-var logErr = debug('dbUpdater:executor:abstract:err');
+var logDev = debug('dbupdater:executor:abstract:dev');
+var logLog = debug('dbupdater:executor:abstract:log');
+var logWarn = debug('dbupdater:executor:abstract:warn');
+var logErr = debug('dbupdater:executor:abstract:err');
 
 /** @namespace Executor */
 

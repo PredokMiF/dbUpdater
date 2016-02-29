@@ -2,13 +2,13 @@
 
 var util = require('util');
 var pg = require('pg');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:executor:postgresFileJs:dev');
-var logLog = debug('dbUpdater:executor:postgresFileJs:log');
-var logWarn = debug('dbUpdater:executor:postgresFileJs:warn');
-var logErr = debug('dbUpdater:executor:postgresFileJs:err');
+var logDev = debug('dbupdater:executor:postgresFileJs:dev');
+var logLog = debug('dbupdater:executor:postgresFileJs:log');
+var logWarn = debug('dbupdater:executor:postgresFileJs:warn');
+var logErr = debug('dbupdater:executor:postgresFileJs:err');
 
 var TaskExecAbstract = require('./exec-abstract');
 
@@ -17,7 +17,7 @@ var TaskExecAbstract = require('./exec-abstract');
  * внутри должен быть валидный NodeJS код. Можно использовать require. Сама задача должна быть оформлена в виде модуля и возвращать функцию с интерфейсом (dbClient, cb)
  * @example
  * // Имя файла 20150506-0053-grigorchuk.postgres-file-js.js
- * var _ = require('lodash-node');
+ * var _ = require('lodash');
  * module.exports = function (client, cb) {
  * var sql = 'CREATE TABLE "myyy" (' +
  *      '   name character varying(256) NOT NULL, ' +

@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var debug = require("debug");
-var logErr = debug('dbUpdater:saver:abstract:err');
+var logErr = debug('dbupdater:saver:abstract:err');
 
 /** @namespace Saver */
 

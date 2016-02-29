@@ -2,13 +2,13 @@
 
 var util = require('util');
 var pg = require('pg');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:executor:postgresFileSql:dev');
-var logLog = debug('dbUpdater:executor:postgresFileSql:log');
-var logWarn = debug('dbUpdater:executor:postgresFileSql:warn');
-var logErr = debug('dbUpdater:executor:postgresFileSql:err');
+var logDev = debug('dbupdater:executor:postgresFileSql:dev');
+var logLog = debug('dbupdater:executor:postgresFileSql:log');
+var logWarn = debug('dbupdater:executor:postgresFileSql:warn');
+var logErr = debug('dbupdater:executor:postgresFileSql:err');
 
 var TaskExecAbstract = require('./exec-abstract');
 

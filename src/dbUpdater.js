@@ -1,12 +1,12 @@
 ﻿var util = require('util');
 var async = require('async');
-var _ = require('lodash-node');
+var _ = require('lodash');
 
 var debug = require("debug");
-var logDev = debug('dbUpdater:dev');
-var log = debug('dbUpdater:log');
-var logWarn = debug('dbUpdater:warn');
-var logErr = debug('dbUpdater:err');
+var logDev = debug('dbupdater:dev');
+var log = debug('dbupdater:log');
+var logWarn = debug('dbupdater:warn');
+var logErr = debug('dbupdater:err');
 
 /**
  * Данный модуль предназначен для выполнение разнообразных действий (задач) при старте проекта.
@@ -22,9 +22,9 @@ var logErr = debug('dbUpdater:err');
  * Примерs [JS]{@link Executor.TaskExecPostgresFileJs} и [SQL]{@link Executor.TaskExecPostgresFileSql} файлов заданий. В примерениже они должны лежать в папке tasks в корне проекта
  *
  * @example
- * var DbUpdater = require('dbUpdater');
+ * var DbUpdater = require('dbupdater');
  *
- * var dbUpdater = DbUpdater({
+ * var dbupdater = DbUpdater({
  *      taskReader: DbUpdater.TaskReaderFile(),
  *   // taskReader: DbUpdater.TaskReaderFile({path: 'tasks'}),
  *      taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: 'postgres://postgres:1@localhost/mydb'}),
@@ -35,11 +35,11 @@ var logErr = debug('dbUpdater:err');
  *      ]
  * });
  *
- * dbUpdater.init(function (err) {
+ * dbupdater.init(function (err) {
  *      if (err) {
- *          console.error('dbUpdater: ' + err);
+ *          console.error('dbupdater: ' + err);
  *      } else {
- *          console.log('dbUpdater done success!');
+ *          console.log('dbupdater done success!');
  *      }
  * });
  *
