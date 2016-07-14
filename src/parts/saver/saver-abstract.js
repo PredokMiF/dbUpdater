@@ -24,7 +24,7 @@ TaskSaverAbstract.prototype = {
      */
     init: function init (cb) {
         var err = new Error('TaskSaverAbstract.init must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     },
 
@@ -40,7 +40,7 @@ TaskSaverAbstract.prototype = {
      */
     getTasks: function taskSaverInit (cb) {
         var err = new Error('TaskSaverAbstract.getTasks must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     },
 
@@ -55,7 +55,7 @@ TaskSaverAbstract.prototype = {
      */
     logExecutedTask: function (task, cb) {
         var err = new Error('TaskSaverAbstract.logExecutedTask must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     }
 

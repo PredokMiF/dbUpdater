@@ -36,8 +36,12 @@ function TaskReaderFile (config) {
         return new TaskReaderFile(config);
     }
 
+    logDev = config.logDev || logDev;
+    log = config.log || log;
+    logWarn = config.logWarn || logWarn;
+    logErr = config.logErr || logErr;
+
     self.config = _.defaults(config || {}, DEF_CONFIG);
-    logDev('Config %j', self.config);
 }
 
 TaskReaderFile.prototype = new TaskReaderAbstract();
@@ -52,13 +56,13 @@ TaskReaderFile.prototype.init = function (cb) {
 
     fs.stat(self.config.path, function (err, stat) {
         if (err && err.code === 'ENOENT') {
-            logDev('Tasks dir not found, create it: "%s"', self.config.path);
+            logDev(util.format('ReaderFile Tasks dir not found, create it: "%s"', self.config.path));
             fs.mkdir(self.config.path, function (err) {
                 if (err) {
                     logErr(err);
                     cb(err);
                 } else {
-                    log('Tasks dir "%s" created', self.config.path);
+                    log(util.format('ReaderFile Tasks dir "%s" created', self.config.path));
                     cb();
                 }
             });
@@ -67,10 +71,10 @@ TaskReaderFile.prototype.init = function (cb) {
             logErr(err);
             cb(err);
         } else if (stat.isDirectory()) {
-            logDev('Tasks dir "%s" is existing', self.config.path);
+            logDev(util.format('ReaderFile Tasks dir "%s" is existing', self.config.path));
             cb();
         } else {
-            err = new Error(util.format('Tasks dir name "%s" is used for non directory file type', self.config.path));
+            err = new Error(util.format('ReaderFile Tasks dir "%s" must be a directory', self.config.path));
             logErr(err);
             cb(err);
         }
@@ -111,7 +115,7 @@ TaskReaderFile.prototype.getTasks = function getTasks (cb) {
             if (err) {
                 logErr(err);
             } else {
-                logDev('Redy to execute tasks %j', result);
+                logDev(util.format('ReaderFile Redy to execute tasks %j', result));
             }
             cb(err, result)
         }

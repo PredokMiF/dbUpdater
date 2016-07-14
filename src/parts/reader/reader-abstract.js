@@ -24,7 +24,7 @@ TaskReaderAbstract.prototype = {
      */
     init: function init (cb) {
         var err = new Error('TaskReaderAbstract.init must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     },
 
@@ -39,7 +39,7 @@ TaskReaderAbstract.prototype = {
      */
     getTasks: function taskSaverInit (cb) {
         var err = new Error('TaskReaderAbstract.getTasks must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     },
 
@@ -55,7 +55,7 @@ TaskReaderAbstract.prototype = {
      */
     getText: function (task, cb) {
         var err = new Error('TaskReaderAbstract.getText must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     }
 

@@ -6,7 +6,7 @@ var _ = require('lodash');
 
 var debug = require("debug");
 var logDev = debug('dbupdater:executor:postgresFileSql:dev');
-var logLog = debug('dbupdater:executor:postgresFileSql:log');
+var log = debug('dbupdater:executor:postgresFileSql:log');
 var logWarn = debug('dbupdater:executor:postgresFileSql:warn');
 var logErr = debug('dbupdater:executor:postgresFileSql:err');
 
@@ -33,8 +33,12 @@ function TaskExecPostgresFileSql(config) {
         return new TaskExecPostgresFileSql(config);
     }
 
+    logDev = config.logDev || logDev;
+    log = config.log || log;
+    logWarn = config.logWarn || logWarn;
+    logErr = config.logErr || logErr;
+
     self.config = config || {};
-    logDev('Config %j', self.config);
 }
 
 TaskExecPostgresFileSql.prototype = new TaskExecAbstract();
@@ -48,7 +52,7 @@ TaskExecPostgresFileSql.prototype = new TaskExecAbstract();
 TaskExecPostgresFileSql.prototype.matchType = function (taskName) {
     var match = !!taskName.match(/^.*\.postgres\-file\-sql\.sql$/);
     if (match) {
-        logDev(util.format('Задача %s совпала с executor`ом exec-postgres-file-sql', taskName));
+        logDev(util.format('ExecPGFileSQL Задача %s совпала с executor`ом exec-postgres-file-sql', taskName));
     }
     return match;
 };
@@ -77,10 +81,10 @@ TaskExecPostgresFileSql.prototype.execute = function (toExecuteTask, text, cb) {
             cb(err);
             return;
         }
-        logDev('DB connected');
+        logDev('ExecPGFileSQL DB connected');
 
         try {
-            logDev('executing SQL code:\n' + text);
+            logDev('ExecPGFileSQL executing SQL code:\n' + text);
 
             client.query(text, function (err) {
                 done();

@@ -1,9 +1,6 @@
 ﻿"use strict";
 
 var debug = require("debug");
-var logDev = debug('dbupdater:executor:abstract:dev');
-var logLog = debug('dbupdater:executor:abstract:log');
-var logWarn = debug('dbupdater:executor:abstract:warn');
 var logErr = debug('dbupdater:executor:abstract:err');
 
 /** @namespace Executor */
@@ -40,7 +37,7 @@ TaskExecAbstract.prototype = {
      */
     execute: function (toExecuteTask, text, cb) {
         var err = new Error('TaskExecAbstract.execute must be implemented by subclass!');
-        logErr(err);
+        (this.config.logErr || logErr)(err);
         cb(err);
     }
 

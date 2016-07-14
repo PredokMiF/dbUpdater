@@ -34,8 +34,12 @@ function TaskSaverPostgreSQL (config) {
         return new TaskSaverPostgreSQL(config);
     }
 
+    logDev = config.logDev || logDev;
+    log = config.log || log;
+    logWarn = config.logWarn || logWarn;
+    logErr = config.logErr || logErr;
+
     self.config = _.defaults(config || {}, DEF_CONFIG);
-    logDev('Config %j', self.config);
 }
 
 TaskSaverPostgreSQL.prototype = new TaskSaverAbstract();
@@ -51,7 +55,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
         err;
 
     if (!self.config.connString) {
-        err = new Error('parametr "connString" is not set at taskSaver_postgresql config');
+        err = new Error('SaverPG parametr "connString" is not set at taskSaver_postgresql config');
         logErr(err);
         cb(err);
         return;
@@ -65,7 +69,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
             cb(err);
             return;
         }
-        logDev('DB connected');
+        logDev('SaverPG DB connected');
 
         client.query("SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';", function(err, result) {
             var sql;
@@ -77,7 +81,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
                 return;
             }
             if (_.findIndex(result.rows, 'table_name', self.config.dbTable) === -1) {
-                logDev('Task table "%s" not found, need to create it', self.config.dbTable);
+                logDev(util.format('SaverPG Task table "%s" not found, need to create it', self.config.dbTable));
                 // Нужно добавить табличку
 
                 sql = util.format('CREATE TABLE "%s" (' +
@@ -97,7 +101,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
                         return;
                     }
 
-                    log('Task table "%s" is created', self.config.dbTable);
+                    log(util.format('SaverPG Task table "%s" is created', self.config.dbTable));
                     client.end();
                     cb();
                 });
@@ -105,7 +109,7 @@ TaskSaverPostgreSQL.prototype.init = function init (cb) {
             } else {
                 // Табличка есть, все ок
                 client.end();
-                logDev('Task table "%s" founded', self.config.dbTable);
+                logDev(util.format('SaverPG Task table "%s" founded', self.config.dbTable));
                 cb();
             }
         });
@@ -135,7 +139,7 @@ TaskSaverPostgreSQL.prototype.getTasks = function taskSaverInit (cb) {
             cb(err);
             return;
         }
-        logDev('DB connected');
+        logDev('SaverPG DB connected');
 
         sql = util.format('SELECT "name", "md5", "executed" FROM "%s"', self.config.dbTable);
         client.query(sql, function (err, result) {
@@ -153,7 +157,7 @@ TaskSaverPostgreSQL.prototype.getTasks = function taskSaverInit (cb) {
             });
 
             client.end();
-            logDev('Executed tasks %j', result);
+            logDev(util.format('SaverPG Executed tasks %j', result));
             cb(null, result);
         });
     });
@@ -181,7 +185,7 @@ TaskSaverPostgreSQL.prototype.logExecutedTask = function (task, cb) {
             cb(err);
             return;
         }
-        logDev('DB connected');
+        logDev('SaverPG DB connected');
 
         sql = util.format('INSERT INTO "%s" (name, md5) VALUES ($1, $2);', self.config.dbTable);
         client.query(sql, [task.name, task.md5], function (err, result) {
