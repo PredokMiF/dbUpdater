@@ -26,12 +26,12 @@ var logErr = debug('dbupdater:err');
  *
  * var dbupdater = DbUpdater({
  *      taskReader: DbUpdater.TaskReaderFile(),
- *   // taskReader: DbUpdater.TaskReaderFile({path: 'tasks'/*, logDev, log, logWarn, logErr* /}),
+ *   // taskReader: DbUpdater.TaskReaderFile({path: 'tasks', logDev, log, logWarn, logErr}),
  *      taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: 'postgres://postgres:1@localhost/mydb'}),
- *   // taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: 'postgres://postgres:1@localhost/mydb', dbTable: 'tasks'/*, logDev, log, logWarn, logErr* /}),
+ *   // taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: 'postgres://postgres:1@localhost/mydb', dbTable: 'tasks', logDev, log, logWarn, logErr}),
  *      taskExecutors: [
- *          DbUpdater.TaskExecPostgresFileJs({connString: 'postgres://postgres:1@localhost/mydb'/*, logDev, log, logWarn, logErr* /}),
- *          DbUpdater.TaskExecPostgresFileSql({connString: 'postgres://postgres:1@localhost/mydb'/*, logDev, log, logWarn, logErr* /})
+ *          DbUpdater.TaskExecPostgresFileJs({connString: 'postgres://postgres:1@localhost/mydb', logDev, log, logWarn, logErr}),
+ *          DbUpdater.TaskExecPostgresFileSql({connString: 'postgres://postgres:1@localhost/mydb', logDev, log, logWarn, logErr})
  *      ],
  *   // logDev: function () {},
  *   // log: function () {},

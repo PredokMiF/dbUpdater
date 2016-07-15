@@ -24,11 +24,11 @@ var DbUpdater = require('dbupdater');
 var dbConnStr = 'postgres://user:pass@localhost/dbName';
 
 var dbupdater = DbUpdater({
-     taskReader: DbUpdater.TaskReaderFile(/*{path: 'tasks'}*/),
-     taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: dbConnStr/*, dbTable: 'tasks'*/}),
+     taskReader: DbUpdater.TaskReaderFile(/*{path: 'tasks', logDev, log, logWarn, logErr}*/),
+     taskSaver: DbUpdater.TaskSaverPostgreSQL({connString: dbConnStr/*, dbTable: 'tasks', logDev, log, logWarn, logErr*/}),
      taskExecutors: [
-         DbUpdater.TaskExecPostgresFileJs({connString: dbConnStr}),
-         DbUpdater.TaskExecPostgresFileSql({connString: dbConnStr})
+         DbUpdater.TaskExecPostgresFileJs({connString: dbConnStr/*, logDev, log, logWarn, logErr*/}),
+         DbUpdater.TaskExecPostgresFileSql({connString: dbConnStr/*, logDev, log, logWarn, logErr*/})
      ]
 });
 
